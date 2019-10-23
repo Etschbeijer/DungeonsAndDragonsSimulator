@@ -1,0 +1,84 @@
+﻿@page
+@model DnDSimulatorWebAplication.Pages.Charakters.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Charakter[0].Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Charakter[0].MaxHitPoints)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Charakter[0].CurrentHitPoints)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Charakter[0].TemporaryHitPoints)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Charakter[0].ArmourClass)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Charakter[0].Initiative)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Charakter[0].AttackBonus)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Charakter[0].Damage)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Charakter[0].Movement)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Charakter) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MaxHitPoints)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CurrentHitPoints)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TemporaryHitPoints)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ArmourClass)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Initiative)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AttackBonus)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Damage)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Movement)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

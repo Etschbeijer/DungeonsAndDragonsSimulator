@@ -1,0 +1,76 @@
+﻿@page
+@model DnDSimulatorWebAplication.Pages.Charakters.DeleteModel
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h1>Delete</h1>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Charakter</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Charakter.Name)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Charakter.Name)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Charakter.MaxHitPoints)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Charakter.MaxHitPoints)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Charakter.CurrentHitPoints)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Charakter.CurrentHitPoints)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Charakter.TemporaryHitPoints)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Charakter.TemporaryHitPoints)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Charakter.ArmourClass)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Charakter.ArmourClass)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Charakter.Initiative)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Charakter.Initiative)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Charakter.AttackBonus)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Charakter.AttackBonus)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Charakter.Damage)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Charakter.Damage)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Charakter.Movement)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Charakter.Movement)
+        </dd>
+    </dl>
+    
+    <form method="post">
+        <input type="hidden" asp-for="Charakter.Id" />
+        <input type="submit" value="Delete" class="btn btn-danger" /> |
+        <a asp-page="./Index">Back to List</a>
+    </form>
+</div>

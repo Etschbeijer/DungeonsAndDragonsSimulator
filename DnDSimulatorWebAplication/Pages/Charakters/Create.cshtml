@@ -1,0 +1,74 @@
+﻿@page
+@model DnDSimulatorWebAplication.Pages.Charakters.CreateModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>Charakter</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Charakter.Name" class="control-label"></label>
+                <input asp-for="Charakter.Name" class="form-control" />
+                <span asp-validation-for="Charakter.Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Charakter.MaxHitPoints" class="control-label"></label>
+                <input asp-for="Charakter.MaxHitPoints" class="form-control" />
+                <span asp-validation-for="Charakter.MaxHitPoints" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Charakter.CurrentHitPoints" class="control-label"></label>
+                <input asp-for="Charakter.CurrentHitPoints" class="form-control" />
+                <span asp-validation-for="Charakter.CurrentHitPoints" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Charakter.TemporaryHitPoints" class="control-label"></label>
+                <input asp-for="Charakter.TemporaryHitPoints" class="form-control" />
+                <span asp-validation-for="Charakter.TemporaryHitPoints" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Charakter.ArmourClass" class="control-label"></label>
+                <input asp-for="Charakter.ArmourClass" class="form-control" />
+                <span asp-validation-for="Charakter.ArmourClass" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Charakter.Initiative" class="control-label"></label>
+                <input asp-for="Charakter.Initiative" class="form-control" />
+                <span asp-validation-for="Charakter.Initiative" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Charakter.AttackBonus" class="control-label"></label>
+                <input asp-for="Charakter.AttackBonus" class="form-control" />
+                <span asp-validation-for="Charakter.AttackBonus" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Charakter.Damage" class="control-label"></label>
+                <input asp-for="Charakter.Damage" class="form-control" />
+                <span asp-validation-for="Charakter.Damage" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Charakter.Movement" class="control-label"></label>
+                <input asp-for="Charakter.Movement" class="form-control" />
+                <span asp-validation-for="Charakter.Movement" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
