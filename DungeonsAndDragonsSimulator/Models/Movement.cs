@@ -12,7 +12,7 @@ namespace DnDSimulator.Model
 {
     public static class Movement
     {
-        public static void Move(this Charakter charakter, int amount)
+        internal static void Move(this Charakter charakter, int amount)
         {
             MovementHandler.CheckMovementLeft(charakter, amount);
         }

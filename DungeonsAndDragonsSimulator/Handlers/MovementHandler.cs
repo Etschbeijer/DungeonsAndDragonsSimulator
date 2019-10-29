@@ -15,7 +15,7 @@ namespace DnDSimulator.Handler
         {
             if (charakter.Movement == charakter.walked)
             {
-                charakter.finishedMovement = true;
+                charakter.FinishedMovement = true;
                 Console.WriteLine(String.Format("{0} has no movement left.", charakter.Name));
                 return false;
             }
@@ -28,7 +28,8 @@ namespace DnDSimulator.Handler
             else
             {
                 charakter.walked = charakter.walked + amount;
-                Console.WriteLine(String.Format("{0} has moved {1}.{3}{0} has {2} movement left.", charakter.Name, amount, charakter.Movement - charakter.walked, Environment.NewLine));
+                Console.WriteLine(String.Format("{0} has moved {1}.", charakter.Name, amount));
+                CheckMovement(charakter);
                 return true;
             }
         }
@@ -37,8 +38,8 @@ namespace DnDSimulator.Handler
         {
             if (charakter.Movement == charakter.walked)
             {
-                charakter.finishedMovement = true;
                 Console.WriteLine(String.Format("{0} has no movement left.", charakter.Name));
+                charakter.FinishedMovement = true;
             }
             else
                 Console.WriteLine(String.Format("{0} has {1} movement left.", charakter.Name, charakter.Movement - charakter.walked));

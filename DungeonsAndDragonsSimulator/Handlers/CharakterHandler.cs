@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.ComponentModel;
 using DnDSimulator.Model;
 using DnDSimulator.Handler;
 
@@ -17,12 +18,12 @@ namespace DnDSimulator.Handler
     {
         private static void NoMoreAction(this Charakter charakter)
         {
-            charakter.hasAction = false;
+            charakter.HasAction = false;
         }
 
         private static bool CheckActionLeft(this Charakter charakter)
         {
-            if (charakter.hasAction)
+            if (charakter.HasAction)
             {
                 NoMoreAction(charakter);
                 return true;
@@ -39,28 +40,36 @@ namespace DnDSimulator.Handler
 
         private static void NoMoreBonusAction(this Charakter charakter)
         {
-            charakter.hasBonusAction = false;
+            charakter.HasBonusAction = false;
         }
 
         private static bool CheckBonusActionLeft(this Charakter charakter)
         {
-            if (charakter.hasAction)
+            if (charakter.HasBonusAction)
             {
-                NoMoreAction(charakter);
+                NoMoreBonusAction(charakter);
                 return true;
             }
             Console.WriteLine("Bonusaction not possible, you have no Bonusaction left.");
             return false;
         }
 
+        private static void CheckBonusActions(this Charakter charakter)
+        {
+            if (charakter.BonusActions.Count < 1)
+            {
+                NoMoreBonusAction(charakter);
+            }
+        }
+
         private static void NoMoreReaction(this Charakter charakter)
         {
-            charakter.hasReaction = false;
+            charakter.HasReaction = false;
         }
 
         private static bool CheckReactionLeft(this Charakter charakter)
         {
-            if (charakter.hasAction)
+            if (charakter.HasReaction)
             {
                 NoMoreReaction(charakter);
                 return true;
@@ -71,12 +80,26 @@ namespace DnDSimulator.Handler
 
         public static void FinishMovement(this Charakter charakter)
         {
-            charakter.finishedMovement = true;
+            charakter.FinishedMovement = true;
         }
 
         public static void Move(this Charakter charakter, int amount)
         {
             MovementHandler.CheckMovementLeft(charakter, amount);
+        }
+
+        private static void CheckReactions(this Charakter charakter)
+        {
+            if (charakter.Reactions.Count < 1)
+            {
+                NoMoreReaction(charakter);
+            }
+        }
+
+        internal static void CheckActioneconomy(this Charakter charakter)
+        {
+            CheckBonusActions(charakter);
+            CheckReactions(charakter);
         }
     }
 }

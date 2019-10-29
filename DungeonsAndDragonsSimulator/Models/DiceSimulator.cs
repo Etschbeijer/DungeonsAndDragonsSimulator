@@ -13,10 +13,14 @@ namespace DnDSimulator.Model
 {
     public class DiceSimulator
     {
+        private static readonly Random random = new Random();
+        //private static readonly object syncLock = new object();
         private static int Roll(int maxValue)
         {
-            var rnd = new Random();
-            return rnd.Next(1, maxValue + 1);
+            //lock (syncLock)
+            { // synchronize
+                return random.Next(1, maxValue + 1);
+            }
         }
 
         internal static int RollD4()
