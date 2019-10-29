@@ -6,20 +6,25 @@
 open DnDSimulator.Model
 open DnDSimulator.Handler
 
-let patrick = new Charakter("Patrick", 8, 3, 12, 4, 6, 12)
+let patrick = new Charakter("Patrick", 8, 3, 2, 4, 6, 12)
 let troll = new Charakter("Troll", 8, 3, 2, 4, 6, 12)
 
 patrick
 troll
 
-patrick.Attack(troll)
-patrick.ShowBonusActions()
-
-
 RollHandler.RollDisadvantage()
 RollHandler.RollAdvantage()
 
-patrick.Move(1)
-patrick.CheckMovement()
+let test = new Round([patrick; troll] |> System.Collections.Generic.List)
 
-new Round([patrick; troll] |> System.Collections.Generic.List)
+(test.Particioners.Item 0).Charakter.Name
+(test.Particioners.Item 1).Charakter.Name
+
+//let charakter = test.PickCharakter()
+
+test.PickCharakter().Name
+test.PickCharakter().Attack(patrick)
+test.PickCharakter().Move(6)
+
+test.PickedCharakter()
+
