@@ -22,7 +22,7 @@ namespace DnDSimulator.Handler
             else
             if (charakter.walked + amount > charakter.Movement)
             {
-                Console.WriteLine("{0} cannot move so far.{1}{0} can move only {2}.", charakter.Name, Environment.NewLine, charakter.Movement - charakter.walked);
+                Console.WriteLine(String.Format("{0} cannot move so far.{1}{0} can move only {2}.", charakter.Name, Environment.NewLine, charakter.Movement - charakter.walked));
                 return false;
             }
             else

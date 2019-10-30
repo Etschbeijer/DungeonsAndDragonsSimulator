@@ -1,7 +1,7 @@
 ﻿
 
 #r @"../DungeonsAndDragonsSimulator\bin\Release\netcoreapp2.2/DungeonsAndDragonsSimulator.dll"
-
+#r @"../DungeonsAndDragonsSimulator\bin\Release\netcoreapp2.2/DungeonsAndDragonsSimulator.dll"
 
 open DnDSimulator.Model
 open DnDSimulator.Handler
