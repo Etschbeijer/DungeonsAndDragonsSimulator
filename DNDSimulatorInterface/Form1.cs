@@ -10,17 +10,17 @@ using System.Windows.Forms;
 
 namespace DNDSimulatorInterface
 {
-    public partial class MainMenu : Form
+    public partial class Form1 : Form
     {
         List<string> fQ = new List<string>();
         List<string> sQ = new List<string>();
 
-        public MainMenu()
+        public Form1()
         {
             InitializeComponent();
         }
 
-        private void MainMenu_Load(object sender, EventArgs e)
+        private void Form1_Load(object sender, EventArgs e)
         {
             charakterCreateButtonLabel.Text         = "Leads to charakter creation menu";
             charakterCreateButtonLabel.BorderStyle  = BorderStyle.FixedSingle;

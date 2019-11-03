@@ -6,7 +6,7 @@ using System.Windows.Forms;
 
 namespace DNDSimulatorInterface
 {
-    partial class MainMenu
+    partial class Form1
     {
         /// <summary>
         /// Erforderliche Designervariable.
@@ -174,7 +174,7 @@ namespace DNDSimulatorInterface
             this.UnCheckButton.Text = "UnCheck";
             this.UnCheckButton.UseVisualStyleBackColor = true;
             // 
-            // MainMenu
+            // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -192,9 +192,9 @@ namespace DNDSimulatorInterface
             this.Controls.Add(this.charakterNameTextBox);
             this.Controls.Add(this.charakterCreateButtonLabel);
             this.Controls.Add(this.charakterCreateButton);
-            this.Name = "MainMenu";
+            this.Name = "Form1";
             this.Text = "Main menu";
-            this.Load += new System.EventHandler(this.MainMenu_Load);
+            this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
