@@ -91,10 +91,12 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Images\BackGrounds\MainMenu.jpg" />
+    <Content Include="Images\Buttons\Menu\Papyrus.jpg" />
     <Content Include="Images\Buttons\Start\Start.jpg" />
     <Content Include="Images\Buttons\Start\Start_Leuchten_1.jpg" />
     <Content Include="Images\Buttons\Start\Start_Leuchten_2.jpg" />
     <Content Include="Images\Buttons\Start\Start_Leuchten_3.jpg" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

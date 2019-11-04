@@ -132,13 +132,13 @@ namespace DNDSimulatorInterface
         {
             ActionChooseBox.Items.Remove(ActionChooseBox.SelectedItem);
             ActionChooseBox.Items.Clear();
-            if (CharakterChooseBox.SelectedItem == "weekdays")
+            if (CharakterChooseBox.SelectedItem.ToString() == "weekdays")
             {
                 ActionChooseBox.Items.Add("Sunday");
                 ActionChooseBox.Items.Add("Monday");
                 ActionChooseBox.Items.Add("Tuesday");
             }
-            else if (CharakterChooseBox.SelectedItem == "year")
+            else if (CharakterChooseBox.SelectedItem.ToString() == "year")
             {
                 ActionChooseBox.Items.Add("2012");
                 ActionChooseBox.Items.Add("2013");
