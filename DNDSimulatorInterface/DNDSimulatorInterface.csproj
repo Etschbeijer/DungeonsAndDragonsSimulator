@@ -92,6 +92,7 @@
   <ItemGroup>
     <Content Include="Images\BackGrounds\MainMenu.jpg" />
     <Content Include="Images\Buttons\Menu\Papyrus.jpg" />
+    <Content Include="Images\Buttons\Menu\ScrollEnding_Top.png" />
     <Content Include="Images\Buttons\Start\Start.jpg" />
     <Content Include="Images\Buttons\Start\Start_Leuchten_1.jpg" />
     <Content Include="Images\Buttons\Start\Start_Leuchten_2.jpg" />

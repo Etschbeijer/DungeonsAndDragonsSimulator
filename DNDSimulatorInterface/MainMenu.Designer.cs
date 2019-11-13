@@ -48,7 +48,6 @@ namespace DNDSimulatorInterface
             this.Text = "Main Menu";
             this.Load += new System.EventHandler(this.MainMenu_Load);
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 

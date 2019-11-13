@@ -5,6 +5,7 @@ using System.IO;
 using System.Threading;
 using System.Drawing;
 using System.Windows.Forms;
+using System.Windows.Forms.Design;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -17,6 +18,9 @@ namespace DNDSimulatorInterface
 {
     public partial class MainMenu : Form
     {
+        System.Windows.Forms.Timer timer = new System.Windows.Forms.Timer();
+        int height;
+
         private Button Start;
 
         private Button fight;
@@ -26,7 +30,10 @@ namespace DNDSimulatorInterface
         private Button back;
         private Button exit;
 
+        private PictureBox hide_PictureBox;
         private PictureBox scroll;
+        private PictureBox scrollEnding_Top;
+        private PictureBox scroll_Enscrolling;
 
         ComponentResourceManager resources = new ComponentResourceManager(typeof(MainMenu));
 
@@ -40,6 +47,7 @@ namespace DNDSimulatorInterface
             InitStart();
 
             SizeChanged += new EventHandler(MainMenu_SizeChanged);
+            timer.Disposed += new EventHandler(exchangeHideBoxWithCharaktermenu);
         }        
 
         private void MainMenu_SizeChanged(object sender, EventArgs e)
@@ -104,7 +112,7 @@ namespace DNDSimulatorInterface
         {
             InvokeStart_LightUp_2();
             Task.Delay(500).Wait();
-            RemoveStart();
+            Start_Remove();
         }
 
         #region Test for time based event
@@ -170,11 +178,11 @@ namespace DNDSimulatorInterface
 
         private void Start_MouseLeaves(object sender, EventArgs e)
         {
-            InvokeStart();
+            Start_Init();
             CenterControlInParent(Start);
         }
 
-        private void InvokeStart()
+        private void Start_Init()
         {
             var projectFolder = Directory.GetParent(Directory.GetCurrentDirectory()).Parent.FullName;
             var file = Path.Combine(projectFolder, @"Images\Buttons\Start\Start.jpg");
@@ -212,17 +220,37 @@ namespace DNDSimulatorInterface
             Start.MouseClick += new MouseEventHandler(Start_MouseKlick);            
         }
 
-        private void RemoveStart()
+        private void Start_Remove()
         {
             Controls.Remove(Start);
             Start.Dispose();
 
-            Task.Delay(500).Wait();
-            Scroll_Init();
-            InitCharakterMenu();            
+            timer.Tick += new EventHandler(Scroll_Elongate_DuringTime);
+            height = 325;
+
+            //Task.Delay(200).Wait();
+            ScrollEnding_Top_Init();
+            hide_PictureBox_init();
+            Scroll_Enscrolling_Init();
+            Controls.Add(scrollEnding_Top);
+
+
+            //Task.Delay(325).Wait();
+            //{
+            //    LoadingScreen_Remove();
+            //    Scroll_Init();
+            //    CharakterMenu_Init();
+            //}            
         }
 
-        private void InitCharakterMenu()
+        private void exchangeHideBoxWithCharaktermenu(object sender, EventArgs e)
+        {            
+            Scroll_Init();
+            CharakterMenu_Init();
+            LoadingScreen_Remove();
+        }
+
+        private void CharakterMenu_Init()
         {
             fight    = new Button();
             loadChar = new Button();
@@ -248,12 +276,12 @@ namespace DNDSimulatorInterface
             fight.BackgroundImageLayout = ImageLayout.Center;
             fight.FlatAppearance.MouseDownBackColor = Color.Transparent;
             fight.FlatAppearance.MouseOverBackColor = Color.Transparent;
-            fight.ForeColor = Color.Transparent;
+            fight.ForeColor = Color.DarkRed;
             fight.FlatStyle = FlatStyle.Flat;
             fight.FlatAppearance.BorderSize = 0;
             fight.Font = new Font("Calibri", 12);
-            //fight.Parent = scroll;
-            fight.SendToBack();
+            fight.Parent = scroll;
+            //fight.SendToBack();
             // 
             // loadChar
             // 
@@ -268,7 +296,7 @@ namespace DNDSimulatorInterface
             loadChar.BackgroundImageLayout = ImageLayout.Center;
             loadChar.FlatAppearance.MouseDownBackColor = Color.Transparent;
             loadChar.FlatAppearance.MouseOverBackColor = Color.Transparent;
-            loadChar.ForeColor = Color.Transparent;
+            loadChar.ForeColor = Color.DarkRed;
             loadChar.FlatStyle = FlatStyle.Flat;
             loadChar.FlatAppearance.BorderSize = 0;
             loadChar.Font = new Font("Calibri", 12);
@@ -287,7 +315,7 @@ namespace DNDSimulatorInterface
             viewChar.BackgroundImageLayout = ImageLayout.Center;
             viewChar.FlatAppearance.MouseDownBackColor = Color.Transparent;
             viewChar.FlatAppearance.MouseOverBackColor = Color.Transparent;
-            viewChar.ForeColor = Color.Transparent;
+            viewChar.ForeColor = Color.DarkRed;
             viewChar.FlatStyle = FlatStyle.Flat;
             viewChar.FlatAppearance.BorderSize = 0;
             viewChar.Font = new Font("Calibri", 12);
@@ -306,7 +334,7 @@ namespace DNDSimulatorInterface
             newChar.BackgroundImageLayout = ImageLayout.Center;
             newChar.FlatAppearance.MouseDownBackColor = Color.Transparent;
             newChar.FlatAppearance.MouseOverBackColor = Color.Transparent;
-            newChar.ForeColor = Color.Transparent;
+            newChar.ForeColor = Color.DarkRed;
             newChar.FlatStyle = FlatStyle.Flat;
             newChar.FlatAppearance.BorderSize = 0;
             newChar.Font = new Font("Calibri", 12);
@@ -325,7 +353,7 @@ namespace DNDSimulatorInterface
             back.BackgroundImageLayout = ImageLayout.Center;
             back.FlatAppearance.MouseDownBackColor = Color.Transparent;
             back.FlatAppearance.MouseOverBackColor = Color.Transparent;
-            back.ForeColor = Color.Transparent;
+            back.ForeColor = Color.DarkRed;
             back.FlatStyle = FlatStyle.Flat;
             back.FlatAppearance.BorderSize = 0;
             back.Font = new Font("Calibri", 12);
@@ -344,25 +372,25 @@ namespace DNDSimulatorInterface
             exit.BackgroundImageLayout = ImageLayout.Center;
             exit.FlatAppearance.MouseDownBackColor = Color.Transparent;
             exit.FlatAppearance.MouseOverBackColor = Color.Transparent;
-            exit.ForeColor = Color.Transparent;
+            exit.ForeColor = Color.DarkRed;
             exit.FlatStyle = FlatStyle.Flat;
             exit.FlatAppearance.BorderSize = 0;
             exit.Font = new Font("Calibri", 12);
             fight.Parent = scroll;
 
-            Controls.Add(back);
-            Controls.Add(newChar);
-            Controls.Add(viewChar);
-            Controls.Add(loadChar);
-            Controls.Add(fight);
-            Controls.Add(exit);
+            scroll.Controls.Add(back);
+            scroll.Controls.Add(newChar);
+            scroll.Controls.Add(viewChar);
+            scroll.Controls.Add(loadChar);
+            scroll.Controls.Add(fight);
+            scroll.Controls.Add(exit);
 
-            CenterCharakterMenuButtons(fight, 375);
-            CenterCharakterMenuButtons(loadChar, 325);
-            CenterCharakterMenuButtons(viewChar, 275);
-            CenterCharakterMenuButtons(newChar, 225);
-            CenterCharakterMenuButtons(back, 175);
-            CenterCharakterMenuButtons(exit, 125);
+            CenterCharakterMenuButtons(fight, 300);
+            CenterCharakterMenuButtons(loadChar, 250);
+            CenterCharakterMenuButtons(viewChar, 200);
+            CenterCharakterMenuButtons(newChar, 150);
+            CenterCharakterMenuButtons(back, 100);
+            CenterCharakterMenuButtons(exit, 50);
 
             #region Events of charakter menu buttons
 
@@ -408,12 +436,49 @@ namespace DNDSimulatorInterface
             scroll.TabStop = false;
             scroll.Image = Image.FromFile(file);
             scroll.BackgroundImageLayout = ImageLayout.Center;
+            scroll.BackColor = Color.Transparent;
+            scroll.Parent = this;
+            scroll.BringToFront();
 
             Controls.Add(scroll);
+            Controls.Add(scrollEnding_Top);
 
-            CenterCharakterMenuButtons(scroll, 70);
+            CenterCharakterMenuButtons(scroll, 75);
 
             ((ISupportInitialize)(scroll)).EndInit();
+        }
+
+        private void ScrollEnding_Top_Init()
+        {
+            // 
+            // ScrollEnding_Top
+            // 
+            var projectFolder = Directory.GetParent(Directory.GetCurrentDirectory()).Parent.FullName;
+            var file = Path.Combine(projectFolder, @"Images\Buttons\Menu\ScrollEnding_Top.png");
+
+            scrollEnding_Top = new PictureBox();
+            ((ISupportInitialize)(scrollEnding_Top)).BeginInit();
+
+            scrollEnding_Top.Location = new Point(303, 41);
+            scrollEnding_Top.Name = "scrollEnding_Top";
+            scrollEnding_Top.Size = new Size(260, 50);
+            scrollEnding_Top.SizeMode = PictureBoxSizeMode.StretchImage;
+            scrollEnding_Top.TabIndex = 1;
+            scrollEnding_Top.TabStop = false;
+            scrollEnding_Top.Image = Image.FromFile(file);
+            scrollEnding_Top.BackgroundImageLayout = ImageLayout.Center;
+            scrollEnding_Top.BackColor = Color.Transparent;
+            scrollEnding_Top.Parent = this;
+            scrollEnding_Top.SendToBack();
+
+            Controls.Add(scrollEnding_Top);
+
+            CenterCharakterMenuButtons(scrollEnding_Top, 412);
+
+            Timer_Interval(1);
+            Timer_Start();
+
+            ((ISupportInitialize)(scrollEnding_Top)).EndInit();
         }
 
         #region Border colour change for buttons of main menu
@@ -520,7 +585,7 @@ namespace DNDSimulatorInterface
 
         private void back_Click(object sender, EventArgs e)
         {
-            RemoveCharakterMenu();
+            CharakterMenu_Remove();
         }
 
         private void exit_Click(object sender, EventArgs e)
@@ -530,14 +595,17 @@ namespace DNDSimulatorInterface
 
         #endregion
 
-        private void RemoveCharakterMenu()
+        private void CharakterMenu_Remove()
         {
-            Controls.Remove(fight);
-            Controls.Remove(loadChar);
-            Controls.Remove(viewChar);
-            Controls.Remove(newChar);
-            Controls.Remove(back);
-            Controls.Remove(exit);
+            scroll.Controls.Remove(fight);
+            scroll.Controls.Remove(loadChar);
+            scroll.Controls.Remove(viewChar);
+            scroll.Controls.Remove(newChar);
+            scroll.Controls.Remove(back);
+            scroll.Controls.Remove(exit);
+
+            Controls.Remove(scroll);
+            Controls.Remove(scrollEnding_Top);
 
             fight.Dispose();
             loadChar.Dispose();
@@ -545,6 +613,9 @@ namespace DNDSimulatorInterface
             newChar.Dispose();
             back.Dispose();
             exit.Dispose();
+
+            scroll.Dispose();
+            scrollEnding_Top.Dispose();
 
             Task.Delay(500).Wait();
 
@@ -555,9 +626,133 @@ namespace DNDSimulatorInterface
             CenterControlInParent(Start);
         }
 
+        #region Loadingscreen members
+
+        private void hide_PictureBox_init()
+        {
+            // 
+            // hide_PictureBox
+            // 
+            var projectFolder = Directory.GetParent(Directory.GetCurrentDirectory()).Parent.FullName;
+            var file = Path.Combine(projectFolder, @"Images\Buttons\Menu\Papyrus.jpg");
+
+            hide_PictureBox = new PictureBox();
+            ((ISupportInitialize)(hide_PictureBox)).BeginInit();
+
+            hide_PictureBox.Location = new Point(303, 41);
+            hide_PictureBox.Name = "hide";
+            hide_PictureBox.Size = new Size(200, 350);
+            hide_PictureBox.TabIndex = 0;
+            hide_PictureBox.TabStop = false;
+            hide_PictureBox.BackColor = Color.Transparent;
+            hide_PictureBox.Parent = this;
+
+            Controls.Add(hide_PictureBox);
+
+            CenterCharakterMenuButtons(hide_PictureBox, 75);
+
+            ((ISupportInitialize)(hide_PictureBox)).EndInit();
+        }
+
+        private void Scroll_Enscrolling_Init()
+        {
+            // 
+            // scroll_Enscrolling
+            // 
+            var projectFolder = Directory.GetParent(Directory.GetCurrentDirectory()).Parent.FullName;
+            var file = Path.Combine(projectFolder, @"Images\Buttons\Menu\Papyrus.jpg");
+
+            scroll_Enscrolling = new PictureBox();
+            ((ISupportInitialize)(scroll_Enscrolling)).BeginInit();
+
+            scroll_Enscrolling.Location = new Point(303, 41);
+            scroll_Enscrolling.Name = "scroll_Enscrolling";
+            scroll_Enscrolling.Size = new Size(200, 350);
+            scroll_Enscrolling.SizeMode = PictureBoxSizeMode.StretchImage;
+            scroll_Enscrolling.TabIndex = 0;
+            scroll_Enscrolling.TabStop = false;
+            scroll_Enscrolling.Image = Image.FromFile(file);
+            scroll_Enscrolling.BackgroundImageLayout = ImageLayout.Center;
+            scroll_Enscrolling.Parent = hide_PictureBox;
+            scroll_Enscrolling.BringToFront();
+
+            hide_PictureBox.Controls.Add(scroll_Enscrolling);
+
+            CenterEnscrolling(scroll_Enscrolling, 0, 325);
+
+            ((ISupportInitialize)(scroll_Enscrolling)).EndInit();
+        }
+
+        private void Scroll_Enscrolling_Elongate(int height)
+        {
+            CenterEnscrolling(scroll_Enscrolling, 0, height);
+        }
+
+        private void LoadingScreen_Remove()
+        {    
+            hide_PictureBox.Controls.Remove(scroll_Enscrolling);
+            scroll_Enscrolling.Dispose();
+
+            Controls.Remove(hide_PictureBox);
+            hide_PictureBox.Dispose();
+        }
+
+        #endregion
+
         private void CenterCharakterMenuButtons(Control ctrlToCenter, int height)
         {
             ctrlToCenter.Left = (ctrlToCenter.Parent.Width - ctrlToCenter.Width) / 2;
+            ctrlToCenter.Top = (ctrlToCenter.Parent.Height - ctrlToCenter.Height) - height;
+        }
+
+        private void CenterEnscrolling(Control ctrlToCenter, int width, int height)
+        {
+            ctrlToCenter.Left = (ctrlToCenter.Parent.Width - ctrlToCenter.Width) / 2 + width;
+            ctrlToCenter.Top = (ctrlToCenter.Parent.Height - ctrlToCenter.Height) - height;
+        }
+
+        private void Scroll_Elongate_DuringTime(object sender, EventArgs e)
+        {
+            if (height >= 0)
+            {
+                Scroll_Enscrolling_Elongate(height);
+                height = height - 3;
+            }
+            else
+            {
+                timer.Tick -= new EventHandler(Scroll_Elongate_DuringTime);
+                Timer_Stop();
+                Timer_Reset();
+            }
+        }
+
+        #region Time coordianting
+
+        private void Timer_Start()
+        {
+            timer.Start();
+        }
+
+        private void Timer_Stop()
+        {
+            timer.Stop();
+        }
+
+        private void Timer_Reset()
+        {
+            timer.Dispose();
+        }
+
+        private void Timer_Interval(int interval)
+        {
+            timer.Interval = interval;
+        }
+
+        #endregion
+
+        private void startTimer(Control ctrlToCenter, int width, int height)
+        {
+            ctrlToCenter.Left = (ctrlToCenter.Parent.Width - ctrlToCenter.Width) / 2 + width;
             ctrlToCenter.Top = (ctrlToCenter.Parent.Height - ctrlToCenter.Height) - height;
         }
 
