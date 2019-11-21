@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace DNDSimulatorInterface.Properties
+namespace DnDSimulatorInterface.Properties
 {
 
 

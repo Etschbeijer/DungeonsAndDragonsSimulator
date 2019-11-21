@@ -4,7 +4,7 @@ using System;
 using System.Drawing;
 using System.Windows.Forms;
 
-namespace DNDSimulatorInterface
+namespace DnDSimulatorInterface
 {
     partial class MainMenu
     {
@@ -48,7 +48,6 @@ namespace DNDSimulatorInterface
             this.Text = "Main Menu";
             this.Load += new System.EventHandler(this.MainMenu_Load);
             this.ResumeLayout(false);
-
         }
 
         #endregion

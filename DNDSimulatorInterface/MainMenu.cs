@@ -14,7 +14,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 
-namespace DNDSimulatorInterface
+namespace DnDSimulatorInterface
 {
     public partial class MainMenu : Form
     {

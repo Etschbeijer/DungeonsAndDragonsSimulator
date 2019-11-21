@@ -10,11 +10,14 @@
     <PackageReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.2.0" PrivateAssets="All" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.2.3" />
+    <PackageReference Include="System.Data.SQLite.Core" Version="1.0.112" />
   </ItemGroup>
 
 
   <ItemGroup>
-    <ProjectReference Include="..\DungeonsAndDragonsSimulator\DungeonsAndDragonsSimulator.csproj" />
+    <ProjectReference Include="..\DnDSimulator\DnDSimulator.csproj">
+      <Private>true</Private>
+    </ProjectReference>
   </ItemGroup>
 
 </Project>

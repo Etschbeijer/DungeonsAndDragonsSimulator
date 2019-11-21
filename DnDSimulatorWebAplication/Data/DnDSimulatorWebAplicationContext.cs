@@ -14,6 +14,6 @@ namespace DnDSimulatorWebAplication.Models
         {
         }
 
-        public DbSet<DnDSimulator.Model.Charakter> Charakter { get; set; }
+        public DbSet<Charakter> Charakter { get; set; }
     }
 }

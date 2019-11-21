@@ -15,6 +15,10 @@
   <ItemGroup>
     <Reference Include="netstandard">
       <HintPath>..\..\MzDatabasesLibrary\MzDatabasesLibrary\bin\Debug\netstandard.dll</HintPath>
+      <Private>true</Private>
+    </Reference>
+    <Reference Include="System.Data.SQLite">
+      <HintPath>..\..\MzDatabasesLibrary\MzDatabasesLibrary\bin\Debug\System.Data.SQLite.dll</HintPath>
     </Reference>
   </ItemGroup>
 

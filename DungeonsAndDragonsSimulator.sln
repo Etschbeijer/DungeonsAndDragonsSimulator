@@ -3,13 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.757
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DungeonsAndDragonsSimulator", "DungeonsAndDragonsSimulator\DungeonsAndDragonsSimulator.csproj", "{B0B5B423-47E0-4FC9-89BE-C51024394302}"
-EndProject
 Project("{6EC3EE1D-3C4E-46DD-8F32-0CC8E7565705}") = "Playground", "Playground\Playground.fsproj", "{2FDB6752-B9CA-4818-80A6-E1693D88CA14}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DnDSimulatorWebAplication", "DnDSimulatorWebAplication\DnDSimulatorWebAplication.csproj", "{F87C79CF-EFBF-4980-A8BC-D970E1B8CB62}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DnDSimulatorInterface", "DNDSimulatorInterface\DnDSimulatorInterface.csproj", "{B43A28A7-0449-4257-8C74-5D5D574D03E3}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DnDSimulator", "DnDSimulator\DnDSimulator.csproj", "{066352BA-C247-48DE-BEF0-36E99DED2AF5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DnDDatabaseHandler", "DnDDatabaseHandler\DnDDatabaseHandler.csproj", "{8D4B37C2-D923-4EF3-9F6C-6266C6FBDB0A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,10 +19,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{B0B5B423-47E0-4FC9-89BE-C51024394302}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{B0B5B423-47E0-4FC9-89BE-C51024394302}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{B0B5B423-47E0-4FC9-89BE-C51024394302}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{B0B5B423-47E0-4FC9-89BE-C51024394302}.Release|Any CPU.Build.0 = Release|Any CPU
 		{2FDB6752-B9CA-4818-80A6-E1693D88CA14}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{2FDB6752-B9CA-4818-80A6-E1693D88CA14}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2FDB6752-B9CA-4818-80A6-E1693D88CA14}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -33,6 +31,14 @@ Global
 		{B43A28A7-0449-4257-8C74-5D5D574D03E3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B43A28A7-0449-4257-8C74-5D5D574D03E3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B43A28A7-0449-4257-8C74-5D5D574D03E3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{066352BA-C247-48DE-BEF0-36E99DED2AF5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{066352BA-C247-48DE-BEF0-36E99DED2AF5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{066352BA-C247-48DE-BEF0-36E99DED2AF5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{066352BA-C247-48DE-BEF0-36E99DED2AF5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8D4B37C2-D923-4EF3-9F6C-6266C6FBDB0A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8D4B37C2-D923-4EF3-9F6C-6266C6FBDB0A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8D4B37C2-D923-4EF3-9F6C-6266C6FBDB0A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8D4B37C2-D923-4EF3-9F6C-6266C6FBDB0A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
